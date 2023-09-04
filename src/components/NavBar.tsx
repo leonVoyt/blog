@@ -108,7 +108,7 @@ const NavBar = () => {
             >
               {pages.length
                 ? pages.map((page) => (
-                    <MenuItem onClick={() => handleRedirect()} key={page}>
+                    <MenuItem onClick={() => handleRedirect()} key={Date.now()}>
                       <Typography textAlign="center">{page}</Typography>
                     </MenuItem>
                   ))
