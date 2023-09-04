@@ -16,29 +16,15 @@ import DropDown from './DropDown'
 import supabase from '../../supabase'
 import { useRouter } from 'next/router'
 import { useAllUsers } from '@/hooks/useAllUsers'
-import { useCurrUser } from '@/hooks/useCurrUser'
 import { IUser } from '@/models/IUser'
-import { json } from 'stream/consumers'
 
 const defaultTheme = createTheme()
 
 export default function SignIn() {
   const [isAuth, setIsAuth] = useState(false)
   const router = useRouter()
-  // const [userEmail, setUserEmail] = useState('')
   const { data: users } = useAllUsers()
-  // const { data: user } = useCurrUser(userEmail)
 
-  // const [users, setUsers] = useState([])
-  // const { data: users } = useAllUser()
-  // console.log(users)
-
-  // useEffect(() => {
-  //   if(users){
-
-  //     setUsers(users)
-  //   }
-  // }, [])
   useEffect(() => {})
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -92,12 +78,6 @@ export default function SignIn() {
 
       await router.push('/')
     } else {
-      // console.log(
-      //   data.get('email'),
-      //   user?.email,
-      //   data.get('password'),
-      //   user?.paassword
-      // )
       alert('Wrong password or email')
     }
   }

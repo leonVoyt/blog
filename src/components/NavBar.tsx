@@ -18,8 +18,6 @@ import { IUser } from '@/models/IUser'
 
 const NavBar = () => {
   const [pages, setPages] = React.useState<String[]>([])
-  const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
-  const [userType, setUserType] = React.useState('')
   const router = useRouter()
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
@@ -29,9 +27,6 @@ const NavBar = () => {
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
-  }
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget)
   }
 
   const handleCloseNavMenu = () => {
@@ -143,7 +138,7 @@ const NavBar = () => {
             {pages.length
               ? pages.map((page) => (
                   <Button
-                    key={page}
+                    key={Date.now()}
                     onClick={handleRedirect}
                     sx={{ my: 2, color: 'white', display: 'block' }}
                   >

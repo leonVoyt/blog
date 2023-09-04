@@ -12,7 +12,7 @@ import supabase from '../../../supabase'
 const PostPage = () => {
   const router = useRouter()
   // console.log(router)
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState<any>([])
   const s = async (id: string) => {
     let { data, error } = await supabase
       .from('comment')
@@ -22,8 +22,9 @@ const PostPage = () => {
     return data
   }
   useEffect(() => {
-    if (router.query.id !== undefined) {
-      s(router.query.id).then((data) => setComments(data))
+    let id: any = router.query.id
+    if (id !== undefined) {
+      s(id).then((data) => setComments(data))
     }
   }, [router.isReady])
   console.log(comments)

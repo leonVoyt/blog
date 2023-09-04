@@ -10,30 +10,23 @@ import { Button } from '@mui/material'
 import CreatePost from '@/components/Modal/CreatePost'
 import { IUser } from '@/models/IUser'
 import { Context } from '@/context/Context'
+import PostService from '@/services/PostService'
 
 const index = () => {
-  const { data } = useAllPosts()
+  const [posts, setPosts] = useState<any>([])
   const { data: users } = useAllUsers()
-  // const [users, setUser] = useState<IUser>({})
 
   const { user } = useContext(Context)
   console.log(user)
-  useEffect(() => {}, [data])
-  // const { currUser } = useAppSelector((state: any) => state.currUserReducer)
-  // const { setCurrUserSucess } = currUserSlice.actions
-  // const dispatch = useAppDispatch()
-  // console.log(currUser)
-  // const get = async () => {
-  //   let { data: posts, error } = await supabase.from('posts').select('*')
-
-  //   await console.log(posts)
-  // }
+  useEffect(() => {
+    PostService.getAllPosts().then((data) => setPosts(data))
+  }, [])
 
   return (
     <Layout>
       <CreatePost />
-      {data?.length && users?.length ? (
-        data.map((post: IPost) => (
+      {posts?.length && users?.length ? (
+        posts.map((post: IPost) => (
           <PostCard
             body={post.body}
             key={post.id}

@@ -23,7 +23,7 @@ interface MyAppProps extends AppProps {
 }
 
 export default function MyApp(props: MyAppProps) {
-  const [user, setUser] = React.useState<IUser | null>(null)
+  const [user, setUser] = React.useState<any>(null)
   React.useEffect(() => {
     if (localStorage.getItem('user')) {
       let user = localStorage.getItem('user')
