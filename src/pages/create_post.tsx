@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useState } from 'react'
 
 const create_post = () => {
   const { user } = useContext(Context)
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState<any>([])
 
   useEffect(() => {
     if (user) {
